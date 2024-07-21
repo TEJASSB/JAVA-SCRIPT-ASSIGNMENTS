@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Paper Scissors</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gardencity.university%2F&psig=AOvVaw3CGzLH_evwEWPvSYmgxDsS&ust=1717055510316000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCICW7KCwsoYDFQAAAAAdAAAAABAE'); /* Replace 'doraemon.jpg' with your image file */
+    background-size: 1200*600;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+  }
+  .choice-btn {
+    padding: 20px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 10px;
+  }
+  #result {
+    font-size: 28px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Rock Paper Scissors</h1>
+
+<div>
+  <button class="choice-btn" onclick="playGame('rock')">🪨 Rock</button>
+  <button class="choice-btn" onclick="playGame('paper')">📄 Paper</button>
+  <button class="choice-btn" onclick="playGame('scissors')">✂️ Scissors</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+function playGame(playerChoice) {
+  const choices = ['rock', 'paper', 'scissors'];
+  const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+  let result;
+
+  if (playerChoice === computerChoice) {
+    result = "It's a tie!";
+  } else if ((playerChoice === 'rock' && computerChoice === 'scissors') ||
+             (playerChoice === 'paper' && computerChoice === 'rock') ||
+             (playerChoice === 'scissors' && computerChoice === 'paper')) {
+    result = "You win!";
+  } else {
+    result = "Computer wins!";
+  }
+
+  document.getElementById('result').innerText = `You chose ${playerChoice}, computer chose ${computerChoice}. ${result}`;
+}
+</script>
+
+</body>
+</html>
